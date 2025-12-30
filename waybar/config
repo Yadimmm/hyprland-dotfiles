@@ -1,0 +1,15 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 36,
+
+  "modules-left": [],
+  "modules-center": [],
+  "modules-right": ["custom/power"],
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Menú de energía",
+    "on-click": "~/.config/waybar/power-menu.sh"
+  }
+}

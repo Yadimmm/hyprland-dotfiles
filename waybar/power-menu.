@@ -1,0 +1,18 @@
+#!/bin/bash
+LOCK="/tmp/wofi-powermenu.lock"
+exec 9>"$LOCK"
+flock -n 9 || exit 0
+
+choice=$(
+  printf "Apagar\x00icon\x1fsystem-shutdown\nReiniciar\x00icon\x1fsystem-reboot\nCerrar sesión\x00icon\x1fsystem-log-out\n" |
+  wofi --dmenu --allow-images --columns 3 \
+    --width 820 --height 260 \
+    --style "$HOME/.config/wofi/powermenu.css" \
+    --prompt ""
+)
+
+case "$choice" in
+  "Apagar") systemctl poweroff ;;
+  "Reiniciar") systemctl reboot ;;
+  "Cerrar sesión") loginctl terminate-user "$USER" ;;
+esac

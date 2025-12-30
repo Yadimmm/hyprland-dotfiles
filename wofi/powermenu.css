@@ -1,0 +1,58 @@
+/* Fondo de la ventana (transparente) */
+window {
+  background: transparent;
+}
+
+/* Panel grande */
+#outer-box {
+  background: rgba(10, 10, 16, 0.78);
+  border-radius: 30px;
+  padding: 48px;
+  border: 2px solid rgba(0, 245, 255, 0.25);
+}
+
+/* Ocultar búsqueda */
+#input, #prompt {
+  opacity: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+/* Contenedor: usaremos flowbox para “grid horizontal” */
+#inner-box,#scroll {
+  background: transparent;
+}
+
+/* Flowbox en horizontal */
+#entry {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  margin: 0 18px;
+  padding: 18px 22px;
+  min-width: 160px;
+  min-height: 140px;
+  border: 2px solid rgba(255, 43, 214, 0.18);
+}
+
+/* Iconos grandes */
+#entry label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #EAFBFF;
+}
+
+#entry image {
+  margin: 0 0 10px 0;
+}
+
+/* Hover */
+#entry:hover {
+  background: rgba(255, 255, 255, 0.26);
+  border: 2px solid rgba(0, 245, 255, 0.55);
+}
+#entry:selected {
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(124, 255, 0, 0.55);
+}

@@ -1,0 +1,12 @@
+# Cache / temporales
+.cache/
+*.log
+*.swp
+*.bak
+
+# Archivos generados
+**/node_modules/
+**/.DS_Store
+
+# Secrets (por si acaso)
+.env

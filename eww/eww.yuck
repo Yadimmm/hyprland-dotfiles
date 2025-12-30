@@ -1,0 +1,39 @@
+(defwindow powermenu
+  :monitor 0
+  :stacking "overlay"
+  :focusable true
+  :exclusive false
+  :geometry (geometry :x "0px" :y "0px" :width "100%" :height "100%")
+  (pm_root)
+)
+
+(defwidget pm_root []
+  (eventbox
+    :class "pm-overlay"
+    :onclick "eww close powermenu"
+    (box
+      :halign "center"
+      :valign "center"
+      (eventbox
+        :onclick "true"
+        (box
+          :class "pm-panel"
+          :orientation "h"
+          :spacing 24
+          (button
+            :class "pm-btn"
+            :onclick "sh -c 'eww close powermenu; systemctl poweroff'"
+            "⏻")
+          (button
+            :class "pm-btn"
+            :onclick "sh -c 'eww close powermenu; systemctl reboot'"
+            "🔄")
+          (button
+            :class "pm-btn"
+            :onclick "sh -c 'eww close powermenu; loginctl terminate-user $USER'"
+            "⎋")
+        )
+      )
+    )
+  )
+)

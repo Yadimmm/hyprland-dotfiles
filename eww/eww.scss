@@ -1,0 +1,56 @@
+* {
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans Symbols2", "Noto Color Emoji";
+}
+
+.pm-overlay {
+  background: rgba(0,0,0,0.35);
+}
+
+.pm-panel {
+  padding: 54px 64px;
+  border-radius: 34px;
+
+  background: rgba(10,10,16,0.78);
+
+  border: 3px solid transparent;
+  background-image:
+    linear-gradient(rgba(10,10,16,0.78), rgba(10,10,16,0.78)),
+    linear-gradient(90deg, #00F5FF, #7A00FF, #FF2BD6, #00F5FF);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-size: 100% 100%, 420% 420%;
+  animation: borderflow 2.2s linear infinite;
+
+  box-shadow: 0 0 45px rgba(0,245,255,0.35);
+}
+
+@keyframes borderflow {
+  0% { background-position: 0% 0%, 0% 50%; }
+  100% { background-position: 0% 0%, 100% 50%; }
+}
+
+.pm-btn {
+  min-width: 230px;
+  min-height: 190px;
+  border-radius: 26px;
+
+  background: rgba(255,255,255,0.08);
+  border: 3px solid rgba(255,43,214,0.35);
+
+  font-size: 70px;
+  font-weight: 900;
+  color: #EAFBFF;
+
+  animation: glowpulse 1.7s ease-in-out infinite;
+}
+
+@keyframes glowpulse {
+  0%,100% { box-shadow: 0 0 18px rgba(0,245,255,0.30), 0 0 45px rgba(122,0,255,0.22); }
+  50% { box-shadow: 0 0 38px rgba(255,43,214,0.55), 0 0 80px rgba(0,245,255,0.40); }
+}
+
+.pm-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border: 3px solid rgba(0,245,255,0.85);
+  transform: scale(1.05);
+}
