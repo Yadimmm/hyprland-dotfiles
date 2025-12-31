@@ -1,5 +1,5 @@
 ;; =========================
-;; EWW - POWERMENU (CENTRADO)
+;; EWW - POWERMENU (LAUNCHER)
 ;; =========================
 
 (defwindow powermenu
@@ -8,46 +8,66 @@
   :focusable true
   :exclusive false
 
-  ;; Ventana a pantalla completa para centrar el panel dentro
+  ;; Ventana centrada (overlay completo)
   :geometry (geometry
     :x "50%"
     :y "50%"
     :anchor "center"
-    :width "30%"
-    :height "30%"
+    :width "100%"
+    :height "100%"
   )
 
   :stylesheet "~/.config/eww/eww.css"
 
-  ;; overlay: click afuera cierra
+  ;; Overlay oscuro (click afuera cierra)
   (eventbox
     :class "pm-overlay"
     :onclick "eww close powermenu"
 
-    ;; centrador real
+    ;; Contenedor centrado
     (box
-  :class "pm-center"
-  :orientation "vertical"
-  :halign "center"
-  :valign "center"
-
-  (eventbox
-    :onclick "true"
-    (box
-      :class "pm-root"
-      :orientation "horizontal"
-      :spacing 36
+      :class "pm-center"
       :halign "center"
       :valign "center"
 
-      (button :class "pm-btn" :onclick "systemctl poweroff"
-        (image :class "pm-ico" :path "/home/yadimmm/.config/eww/icons/power.svg"))
+      ;; Evita cerrar al hacer click dentro
+      (eventbox
+        :onclick "true"
 
-      (button :class "pm-btn" :onclick "systemctl reboot"
-        (image :class "pm-ico" :path "/home/yadimmm/.config/eww/icons/reboot.svg"))
+        ;; Panel visual (solo decorativo)
+        (box
+          :class "pm-panel"
+          :orientation "horizontal"
+          :spacing 36
+          :halign "center"
+          :valign "center"
 
-      (button :class "pm-btn" :onclick "loginctl terminate-user yadimmm"
-        (image :class "pm-ico" :path "/home/yadimmm/.config/eww/icons/logout.svg"))
+          ;; POWER
+          (button
+            :class "pm-btn pm-power"
+            :onclick "env WAYLAND_DISPLAY=$WAYLAND_DISPLAY XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR ~/Projects/neon-overlay/build/neon-overlay &"
+            (box :class "pm-ico-wrap"
+            (image :
+              class "pm-ico" 
+              :path "/home/yadimmm/.config/eww/icons/power.svg")))
+
+          ;; REBOOT
+          (button
+            :class "pm-btn pm-reboot"
+            :onclick "~/Projects/neon-overlay/build/neon-overlay &"
+            (box :class "pm-ico-wrap"
+              (image
+                :class "pm-ico"
+                :path "/home/yadimmm/.config/eww/icons/reboot.svg")))
+
+          ;; LOGOUT
+          (button
+            :class "pm-btn pm-logout"
+            :onclick "~/Projects/neon-overlay/build/neon-overlay &"
+            (box :class "pm-ico-wrap"
+              (image
+                :class "pm-ico"
+                :path "/home/yadimmm/.config/eww/icons/logout.svg")))
         )
       )
     )
